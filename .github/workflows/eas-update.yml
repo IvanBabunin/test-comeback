@@ -1,0 +1,36 @@
+name: EAS Update
+
+# main → OTA-оновлення в канал preview.
+# Для production запусти вручну (Actions → EAS Update → Run workflow).
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      channel:
+        description: Channel
+        required: true
+        default: production
+        type: choice
+        options: [preview, production]
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    env:
+      CHANNEL: ${{ inputs.channel || 'preview' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+      - run: npm ci
+      - run: eas update --channel "$CHANNEL" --auto --non-interactive
+        env:
+          APP_VARIANT: ${{ env.CHANNEL }}
+          EXPO_PUBLIC_API_URL: ${{ vars.EXPO_PUBLIC_API_URL }}

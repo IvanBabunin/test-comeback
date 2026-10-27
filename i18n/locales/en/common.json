@@ -1,0 +1,35 @@
+{
+  "actions": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "retry": "Try again",
+    "close": "Close"
+  },
+  "errors": {
+    "generic": "Something went wrong. Try again.",
+    "network": "Can't reach the server."
+  },
+  "tabs": {
+    "home": "Home",
+    "profile": "Profile"
+  },
+  "home": {
+    "title": "Home",
+    "empty": "Nothing here yet",
+    "openDetails": "Open details"
+  },
+  "details": {
+    "title": "Details",
+    "id": "ID: {{id}}"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "back": "Go home"
+  },
+  "language": {
+    "title": "Language",
+    "system": "Device language",
+    "uk": "Українська",
+    "en": "English"
+  }
+}
