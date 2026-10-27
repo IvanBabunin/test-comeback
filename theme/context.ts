@@ -1,7 +1,7 @@
 import { createContext, useContext } from 'react';
 
-import { lightTheme, type Theme } from './tokens';
+import { theme, type Theme } from './tokens';
 
-export const ThemeContext = createContext<Theme>(lightTheme);
+export const ThemeContext = createContext<Theme>(theme);
 
 export const useTheme = () => useContext(ThemeContext);

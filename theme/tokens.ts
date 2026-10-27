@@ -1,80 +1,132 @@
 /**
- * Дизайн-токени. Компоненти беруть кольори й відступи ТІЛЬКИ звідси.
- * Під кожен проєкт міняєш палітру тут — решта підхопиться.
+ * Дизайн-токени (Figma "Foundations"). Компоненти беруть кольори й відступи ТІЛЬКИ звідси.
  */
 const palette = {
-  ink: '#15171A',
-  graphite: '#2A2E33',
-  slate: '#6B7280',
-  mist: '#E5E7EB',
-  paper: '#FFFFFF',
-  night: '#101214',
-  accent: '#2F6FEB',
-  accentDark: '#5B8EF0',
-  success: '#1F9D55',
-  warning: '#C27803',
-  danger: '#D93636',
+  violet: '#7254F3',
+  violetLight: '#8378FF',
+  sky: '#71C6FF',
+  ink: '#181930',
+  slate: '#858998',
+  graphite: '#6E7286',
+  cloud: '#F7F8FC',
+  white: '#FFFFFF',
+  mist: '#E9EAF1',
+  rose: '#F04472',
+  emerald: '#25A77B',
+  crimson: '#D93A4A',
 };
 
-export const lightColors = {
-  background: palette.paper,
-  surface: '#F6F7F9',
+export const colors = {
+  background: palette.cloud,
+  surface: palette.white,
   text: palette.ink,
-  textMuted: palette.slate,
+  textSecondary: palette.slate,
+  textMuted: palette.graphite,
   border: palette.mist,
-  primary: palette.accent,
-  onPrimary: palette.paper,
-  success: palette.success,
-  warning: palette.warning,
-  danger: palette.danger,
+  primary: palette.violet,
+  primaryTint: '#F0EDFE',
+  onPrimary: palette.white,
+  dark: palette.ink,
+  favorite: palette.rose,
+  favoriteTint: '#FEEBF0',
+  success: palette.emerald,
+  successTint: '#E3F5EE',
+  danger: palette.crimson,
+  dangerTint: '#FDECEE',
+  skeleton: palette.mist,
+  overlayChip: 'rgba(255, 255, 255, 0.18)',
+  backdrop: 'rgba(24, 25, 48, 0.85)',
 };
 
-export type Colors = typeof lightColors;
+export type Colors = typeof colors;
 
-export const darkColors: Colors = {
-  background: palette.night,
-  surface: '#1A1D21',
-  text: '#F3F4F6',
-  textMuted: '#9CA3AF',
-  border: palette.graphite,
-  primary: palette.accentDark,
-  onPrimary: palette.night,
-  success: '#34C77B',
-  warning: '#E3A008',
-  danger: '#F05252',
+// Відтінки бейджів категорій не винесені у Foundations — підібрані зі зразків на макеті.
+export const categoryColors: Record<string, { background: string; text: string }> = {
+  Tech: { background: '#F0EDFE', text: palette.violet },
+  Music: { background: '#FEEBF0', text: '#C8295A' },
+  Business: { background: '#FFF3DC', text: '#A86A12' },
+  Sports: { background: '#E5F1FD', text: '#2B78D0' },
 };
+export const fallbackCategoryColor = { background: palette.mist, text: palette.graphite };
+
+export const gradients = {
+  chip: [palette.violet, palette.violetLight],
+  featuredBorder: [palette.violet, palette.sky],
+  featuredOverlay: {
+    colors: [
+      'rgba(24, 25, 48, 0)',
+      'rgba(24, 25, 48, 0)',
+      'rgba(70, 44, 170, 0.42)',
+      'rgba(40, 24, 110, 0.8)',
+      'rgba(14, 12, 32, 0.94)',
+    ],
+    locations: [0, 0.32, 0.56, 0.8, 1],
+  },
+} as const;
+
+export const shadows = {
+  card: '0px 10px 22px rgba(140, 143, 174, 0.18)',
+  featured: '0px 14px 26px rgba(56, 40, 140, 0.45)',
+  primary: '0px 8px 18px rgba(114, 84, 243, 0.6)',
+  tabBar: '0px -6px 24px rgba(140, 143, 174, 0.18)',
+} as const;
 
 export const spacing = {
-  xs: 4,
-  sm: 8,
-  md: 12,
-  lg: 16,
+  xxs: 4,
+  xs: 8,
+  sm: 12,
+  md: 16,
+  lg: 20,
   xl: 24,
-  xxl: 32,
+  xxl: 28,
+  xxxl: 40,
 } as const;
 
 export const radius = {
-  sm: 6,
-  md: 10,
-  lg: 16,
+  badge: 8,
+  price: 12,
+  thumb: 14,
+  input: 16,
+  card: 18,
+  featured: 20,
+  panel: 22,
+  tabBar: 24,
   full: 999,
 } as const;
 
+export const fonts = {
+  regular: 'Inter_400Regular',
+  medium: 'Inter_500Medium',
+  semibold: 'Inter_600SemiBold',
+  bold: 'Inter_700Bold',
+} as const;
+
 export const typography = {
-  title: { fontSize: 28, lineHeight: 34, fontWeight: '700' },
-  subtitle: { fontSize: 20, lineHeight: 26, fontWeight: '600' },
-  body: { fontSize: 16, lineHeight: 22, fontWeight: '400' },
-  label: { fontSize: 14, lineHeight: 18, fontWeight: '500' },
-  caption: { fontSize: 12, lineHeight: 16, fontWeight: '400' },
+  heading: { fontFamily: fonts.bold, fontSize: 30, lineHeight: 36 },
+  section: { fontFamily: fonts.semibold, fontSize: 21, lineHeight: 28 },
+  title: { fontFamily: fonts.semibold, fontSize: 16, lineHeight: 21 },
+  label: { fontFamily: fonts.semibold, fontSize: 14, lineHeight: 18 },
+  body: { fontFamily: fonts.regular, fontSize: 14, lineHeight: 20 },
+  caption: { fontFamily: fonts.medium, fontSize: 12, lineHeight: 16 },
+  price: { fontFamily: fonts.bold, fontSize: 15, lineHeight: 20 },
+} as const;
+
+export const layout = {
+  tabBarHeight: 50,
+  minTouch: 44,
+  controlHeight: 48,
+  cardHeight: 120,
+  thumb: 96,
+  featuredHeight: 190,
 } as const;
 
 export type Theme = {
-  dark: boolean;
   colors: Colors;
   spacing: typeof spacing;
   radius: typeof radius;
   typography: typeof typography;
+  shadows: typeof shadows;
+  layout: typeof layout;
 };
 
-export const lightTheme: Theme = { dark: false, colors: lightColors, spacing, radius, typography };
-export const darkTheme: Theme = { dark: true, colors: darkColors, spacing, radius, typography };
+export const theme: Theme = { colors, spacing, radius, typography, shadows, layout };

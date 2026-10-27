@@ -7,21 +7,25 @@ import { makeStyles } from '@/theme';
 type EmptyStateProps = {
   title: string;
   description?: string;
+  icon?: ReactNode;
   action?: ReactNode;
 };
 
-export function EmptyState({ title, description, action }: EmptyStateProps) {
+export function EmptyState({ title, description, icon, action }: EmptyStateProps) {
   const styles = useStyles();
   return (
     <View style={styles.root}>
-      <Text variant="subtitle" align="center">
-        {title}
-      </Text>
-      {description ? (
-        <Text color="textMuted" align="center">
-          {description}
+      {icon}
+      <View style={styles.texts}>
+        <Text variant="title" align="center" accessibilityRole="header">
+          {title}
         </Text>
-      ) : null}
+        {description ? (
+          <Text color="textMuted" align="center">
+            {description}
+          </Text>
+        ) : null}
+      </View>
       {action}
     </View>
   );
@@ -29,10 +33,11 @@ export function EmptyState({ title, description, action }: EmptyStateProps) {
 
 const useStyles = makeStyles((t) => ({
   root: {
-    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    gap: t.spacing.md,
-    padding: t.spacing.xl,
+    gap: t.spacing.lg,
+    paddingHorizontal: t.spacing.xl,
+    paddingVertical: t.spacing.xxxl,
   },
+  texts: { alignItems: 'center', gap: t.spacing.xs },
 }));

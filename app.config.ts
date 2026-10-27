@@ -26,7 +26,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   version: '1.0.0',
   orientation: 'portrait',
   icon: './assets/icon.png',
-  userInterfaceStyle: 'automatic',
+  userInterfaceStyle: 'light',
   ios: {
     bundleIdentifier: `${BUNDLE_ID}${idSuffix}`,
     supportsTablet: false,
@@ -46,6 +46,8 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   plugins: [
     'expo-router',
     'expo-localization',
+    'expo-font',
+    'expo-image',
     [
       'expo-splash-screen',
       {
