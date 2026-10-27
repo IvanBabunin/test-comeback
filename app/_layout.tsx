@@ -9,7 +9,9 @@ import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 
+import { Toast } from '@/components/shared/ui';
 import { AppProviders } from '@/providers/AppProviders';
+import { useToastStore } from '@/store/toast';
 
 void SplashScreen.preventAutoHideAsync();
 
@@ -22,6 +24,8 @@ export default function RootLayout() {
   });
   // Помилка шрифту не має блокувати застосунок — показуємо із системним шрифтом.
   const ready = loaded || error !== null;
+  const toastMessage = useToastStore((s) => s.message);
+  const hideToast = useToastStore((s) => s.hide);
 
   useEffect(() => {
     if (ready) void SplashScreen.hideAsync();
@@ -34,6 +38,7 @@ export default function RootLayout() {
       <Stack screenOptions={{ headerShown: false }}>
         <Stack.Screen name="(tabs)" />
       </Stack>
+      <Toast message={toastMessage} onHide={hideToast} />
     </AppProviders>
   );
 }

@@ -7,7 +7,8 @@
   },
   "errors": {
     "title": "Something went wrong",
-    "generic": "We couldn't load events. Please try again."
+    "generic": "We couldn't load events. Please try again.",
+    "favorite": "Couldn't update favorites. Try again."
   },
   "tabs": {
     "home": "Home",
