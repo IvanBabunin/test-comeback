@@ -16,13 +16,6 @@ export default function TabsLayout() {
           tabBarIcon: ({ color }) => <TabBarIcon name="home-outline" color={color} />,
         }}
       />
-      <Tabs.Screen
-        name="profile"
-        options={{
-          title: t('tabs.profile'),
-          tabBarIcon: ({ color }) => <TabBarIcon name="account-outline" color={color} />,
-        }}
-      />
     </Tabs>
   );
 }

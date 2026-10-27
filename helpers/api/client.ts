@@ -1,5 +1,4 @@
 import { env } from '@/config/env';
-import { tokenStorage } from '@/helpers/storage';
 
 import { ApiError } from './errors';
 
@@ -9,13 +8,6 @@ type RequestOptions = Omit<RequestInit, 'body' | 'method'> & {
   body?: unknown;
   query?: Query;
 };
-
-let onUnauthorized: (() => void) | undefined;
-
-/** Викликається один раз при старті (providers/), щоб 401 розлогінював користувача. */
-export function setUnauthorizedHandler(handler: () => void) {
-  onUnauthorized = handler;
-}
 
 function buildUrl(path: string, query?: Query) {
   const url = `${env.apiUrl}${path}`;
@@ -30,7 +22,6 @@ function buildUrl(path: string, query?: Query) {
 
 async function request<T>(method: string, path: string, options: RequestOptions = {}): Promise<T> {
   const { body, query, headers, ...init } = options;
-  const token = await tokenStorage.get();
 
   const res = await fetch(buildUrl(path, query), {
     ...init,
@@ -38,17 +29,12 @@ async function request<T>(method: string, path: string, options: RequestOptions 
     headers: {
       Accept: 'application/json',
       ...(body !== undefined && { 'Content-Type': 'application/json' }),
-      ...(token && { Authorization: `Bearer ${token}` }),
       ...headers,
     },
     body: body === undefined ? undefined : JSON.stringify(body),
   });
 
-  if (!res.ok) {
-    const error = await ApiError.fromResponse(res);
-    if (error.isUnauthorized) onUnauthorized?.();
-    throw error;
-  }
+  if (!res.ok) throw await ApiError.fromResponse(res);
 
   if (res.status === 204) return undefined as T;
   return (await res.json()) as T;

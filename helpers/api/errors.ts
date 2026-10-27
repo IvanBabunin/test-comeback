@@ -9,10 +9,6 @@ export class ApiError extends Error {
     this.name = 'ApiError';
   }
 
-  get isUnauthorized() {
-    return this.status === 401;
-  }
-
   get isClientError() {
     return this.status >= 400 && this.status < 500;
   }

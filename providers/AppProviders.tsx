@@ -5,18 +5,11 @@ import { I18nextProvider } from 'react-i18next';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-import { setUnauthorizedHandler } from '@/helpers/api/client';
 import { queryClient, subscribeAppFocus } from '@/helpers/query-client';
 import { deviceLanguage, i18n } from '@/i18n';
-import { useAuthStore } from '@/store/auth';
 import { useSettingsStore } from '@/store/settings';
 
 import { ThemeProvider } from './ThemeProvider';
-
-setUnauthorizedHandler(() => {
-  void useAuthStore.getState().signOut();
-  queryClient.clear();
-});
 
 export function AppProviders({ children }: { children: ReactNode }) {
   const language = useSettingsStore((s) => s.language);
