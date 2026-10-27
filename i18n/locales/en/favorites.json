@@ -1,0 +1,11 @@
+{
+  "title": "My Favorites",
+  "subtitle": "Your saved experiences, all in one place.",
+  "count_one": "{{count}} saved event",
+  "count_other": "{{count}} saved events",
+  "empty": {
+    "title": "No favorites yet",
+    "description": "Tap the heart on any event to save it here.",
+    "action": "Discover events"
+  }
+}

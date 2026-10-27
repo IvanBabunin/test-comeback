@@ -13,7 +13,7 @@ export default function NotFoundScreen() {
       <EmptyState
         title={t('notFound.title')}
         action={
-          <Link href={ROUTES.HOME}>
+          <Link href={ROUTES.DISCOVER}>
             <Text color="primary">{t('notFound.back')}</Text>
           </Link>
         }

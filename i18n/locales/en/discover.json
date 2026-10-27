@@ -1,0 +1,33 @@
+{
+  "location": {
+    "label": "Explore events in",
+    "city": "Berlin, Germany",
+    "a11y": "Location: {{city}}"
+  },
+  "notifications": "Notifications",
+  "hero": {
+    "line1": "Find your next",
+    "line2": "experience."
+  },
+  "subtitle": "Discover amazing events happening near you.",
+  "search": {
+    "placeholder": "Search events...",
+    "clear": "Clear search text"
+  },
+  "filters": "Filters",
+  "categories": {
+    "all": "All"
+  },
+  "featured": "Featured for you",
+  "upcoming": "Upcoming events",
+  "seeAll": "See all",
+  "empty": {
+    "title": "No events found",
+    "description": "Try a different search or change your filters.",
+    "action": "Clear search"
+  },
+  "noEvents": {
+    "title": "No events yet",
+    "description": "New events will appear here soon."
+  }
+}

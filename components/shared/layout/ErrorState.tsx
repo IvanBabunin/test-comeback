@@ -18,28 +18,37 @@ export function ErrorState({ title, message, onRetry }: ErrorStateProps) {
   const styles = useStyles();
   const theme = useTheme();
   return (
-    <EmptyState
-      title={title ?? t('errors.title')}
-      description={message ?? t('errors.generic')}
-      icon={
-        <View style={styles.icon}>
-          <CloudAlert size={26} color={theme.colors.danger} strokeWidth={2} />
-        </View>
-      }
-      action={
-        onRetry ? (
-          <Button
-            title={t('actions.retry')}
-            icon={<RefreshCw size={18} color={theme.colors.onPrimary} strokeWidth={2.2} />}
-            onPress={onRetry}
-          />
-        ) : null
-      }
-    />
+    <View style={styles.panel}>
+      <EmptyState
+        title={title ?? t('errors.title')}
+        description={message ?? t('errors.generic')}
+        icon={
+          <View style={styles.icon}>
+            <CloudAlert size={26} color={theme.colors.danger} strokeWidth={2} />
+          </View>
+        }
+        action={
+          onRetry ? (
+            <Button
+              title={t('actions.retry')}
+              icon={<RefreshCw size={18} color={theme.colors.onPrimary} strokeWidth={2.2} />}
+              onPress={onRetry}
+            />
+          ) : null
+        }
+      />
+    </View>
   );
 }
 
 const useStyles = makeStyles((t) => ({
+  panel: {
+    borderRadius: t.radius.panel,
+    backgroundColor: t.colors.surface,
+    borderWidth: 1,
+    borderColor: t.colors.border,
+    boxShadow: t.shadows.card,
+  },
   icon: {
     width: 60,
     height: 60,

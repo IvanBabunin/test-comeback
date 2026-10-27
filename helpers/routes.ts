@@ -1,3 +1,4 @@
 export const ROUTES = {
-  HOME: '/',
+  DISCOVER: '/',
+  FAVORITES: '/favorites',
 } as const;

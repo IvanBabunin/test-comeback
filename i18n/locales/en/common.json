@@ -11,26 +11,16 @@
     "favorite": "Couldn't update favorites. Try again."
   },
   "tabs": {
-    "home": "Home",
-    "profile": "Profile"
-  },
-  "home": {
-    "title": "Home",
-    "empty": "Nothing here yet",
-    "openDetails": "Open details"
-  },
-  "details": {
-    "title": "Details",
-    "id": "ID: {{id}}"
+    "discover": "Explore",
+    "favorites": "Favorites"
   },
   "notFound": {
     "title": "Page not found",
     "back": "Go home"
   },
-  "language": {
-    "title": "Language",
-    "system": "Device language",
-    "uk": "Українська",
-    "en": "English"
+  "free": "Free",
+  "favorite": {
+    "add": "Add {{title}} to favorites",
+    "remove": "Remove {{title}} from favorites"
   }
 }
